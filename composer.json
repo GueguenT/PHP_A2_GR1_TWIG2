@@ -1,0 +1,15 @@
+{
+    "name": "irvyne/php_a2_gr1_twig",
+    "description": "WTF?!",
+    "require": {
+        "twig/twig": "~1.16"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thibaud BARDIN",
+            "email": "thibaud.bardin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
