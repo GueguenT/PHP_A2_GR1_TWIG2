@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent() }} - Aricles
+{% endblock %}
+
+
+{% block content %}
+
+{% for article in articles %}
+
+        <div class="row">
+
+<article class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            {% block article %}
+    <header>
+        {% block header %}
+        <h1><a href="article.php?id={{ article.id }}">{{ article.title }}</a></h1>
+        <img title="{{ article.title }}" alt="{{ article.title }}" src="{{ article.image }}">
+        <small>Written by {{ article.user_id }} on {{ article.created_at }}</small>
+        {% endblock %}
+    </header>
+    <div class="content">
+
+        <p>{{ article.content }}</p>
+
+        </div>
+    <footer>
+        {% block footer %}
+        <p>Posted in category: <a href="/article?id='.$article['category_id'].'">{{ article.category_id }}</a></p>
+        <p><a href="/tag?id='.$article['category_id'].'"><span class="label label-primary">Primary</span></a></p>
+        {% endblock %}
+    </footer>
+        {% endblock %}
+    </article>
+
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+

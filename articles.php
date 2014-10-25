@@ -6,8 +6,22 @@
 
 require __DIR__.'/_header.php';
 
+Twig_Autoloader::register();
+
+$loader = new Twig_Loader_Filesystem([
+    __DIR__.'/views',
+]);
+
+$twig = new Twig_Environment($loader, [
+    //'cache' => null,
+]);
+
+
+
 $articles = getArticles($link);
 
 require __DIR__.'/_footer.php';
 
-include __DIR__.'/template/articles.php';
+echo $twig->render('articles.html.twig', [
+    'articles' => $articles,
+]);

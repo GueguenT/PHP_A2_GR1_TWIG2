@@ -6,6 +6,17 @@
 
 require __DIR__.'/_header.php';
 
+
+Twig_Autoloader::register();
+
+$loader = new Twig_Loader_Filesystem([
+    __DIR__.'/views',
+]);
+
+$twig = new Twig_Environment($loader, [
+    //'cache' => null,
+]);
+
 $perPage = 6; // nbArticleParPage
 $nbArticles = countArticles($link); //nbArticleTotal
 $currentPage = !empty($_GET['p']) ? (int)$_GET['p'] : 1;// numéro de la page
@@ -23,6 +34,11 @@ $articles = getArticles($link, null, ($currentPage-1)*$perPage, $perPage);
 
 //include __DIR__.'/template/articles.php';
 
-echo $twig->render('base.html.twig');
+
+echo $twig->render('base.html.twig', [
+
+]);
+
+
 
 require __DIR__.'/_footer.php';
