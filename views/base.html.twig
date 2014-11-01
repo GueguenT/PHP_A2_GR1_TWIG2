@@ -48,7 +48,7 @@
                             <li><a href="/admin-article-list.php"><span class="glyphicon glyphicon-list-alt"></span> List Articles</a></li>
                             <li><a href="/admin-article-add.php"><span class="glyphicon glyphicon-plus-sign"></span> Add Article</a></li>
                             <li class="divider"></li>
-                            {% if 'admin' == connected %}
+                            {% if admin is defined %}
                                 <li class="dropdown-header">Categories</li>
                                 <li><a href="/admin-category-list.php"><span class="glyphicon glyphicon-list-alt"></span> List Categories</a></li>
                                 <li><a href="/admin-category-add.php"><span class="glyphicon glyphicon-plus-sign"></span> Add Category</a></li>
@@ -68,9 +68,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if connected is defined %}
                     <li><a href="#">Welcome {{ username }}</a></li>
-                    <li><a href="/logout.php">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 {% else %}
-                    <li><a href="/login.php">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                 {% endif %}
             </ul>
         </div><!--/.nav-collapse -->

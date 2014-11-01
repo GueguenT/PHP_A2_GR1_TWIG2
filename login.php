@@ -6,6 +6,13 @@
 
 require __DIR__.'/_header.php';
 
+Twig_Autoloader::register();
+
+$loader = new Twig_Loader_Filesystem([
+    __DIR__.'/views',
+]);
+
+
 if (isConnected()) {
     header('Location: index.php');
 }
@@ -16,16 +23,36 @@ if (isset($_POST['loginSubmit'])) {
 
     if (empty($username) || empty($password)) {
         $missing_credential = true;
+        $twig = new Twig_Environment($loader,[
+//'cache' => null,
+        ]);
+
+        echo $twig->render('login.html.twig', [
+
+
+            'missing_credential' => $missing_credential,
+
+        ]);
     } else {
         $connection = connection($link, $username, $password);
         if ($connection) {
             header('Location: index.php');
         } else {
             $credential_error = true;
+
+            $twig = new Twig_Environment($loader,[
+//'cache' => null,
+            ]);
+
+            echo $twig->render('login.html.twig', [
+
+
+                'credential_error' => $credential_error,
+
+            ]);
         }
     }
 }
 
-include __DIR__.'/template/login.php';
 
 require __DIR__.'/_footer.php';

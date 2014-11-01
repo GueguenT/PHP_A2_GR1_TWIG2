@@ -30,6 +30,7 @@ if (!empty($_GET['id'])) {
 
 echo $twig->render('article.html.twig', [
     'article' => $article,
+
 ]);
 
 require __DIR__.'/_footer.php';

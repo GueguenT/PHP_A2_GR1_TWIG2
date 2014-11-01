@@ -20,8 +20,12 @@ $twig = new Twig_Environment($loader, [
 
 $articles = getArticles($link);
 
-require __DIR__.'/_footer.php';
+
 
 echo $twig->render('articles.html.twig', [
     'articles' => $articles,
+
 ]);
+
+
+require __DIR__.'/_footer.php';
